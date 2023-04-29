@@ -7,7 +7,7 @@
 .app-card{
     background: white;
     max-width: 400px;
-    min-width: 375px;
+    min-width:200px;
     border-radius: 8px;
 }
 
@@ -75,14 +75,16 @@ button{
 }
 
 .temperature{
-    font-size: 60px;
+    font-size: 24px;
     font-weight: 700;
     line-height: normal;
+    padding-top: 20px;
 }
 
 .description, .location{
-    font-size: 24px;
+    font-size: 20px;
     line-height: 32px;
+    padding-top: 20px;
 }
 
 footer{
@@ -94,11 +96,15 @@ footer{
 
 .feels_like{
     width: 100%;
-    padding: 16px;
+    padding: 14px;
 }
 
 .humidity{
     border-left: 1px solid #ccc;
     width: 100%;
-    padding: 16px;
+    padding: 14px;
+}
+
+.weather-img{
+    max-width: 100px;
 }
