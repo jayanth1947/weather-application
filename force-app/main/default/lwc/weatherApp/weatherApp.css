@@ -1,6 +1,6 @@
 .app{
     background: #091f43;
-    height: 100vh;
+    min-height: 100vh;
     
 }
 
@@ -68,4 +68,37 @@ button{
     border-radius: 5px;
     padding: 12px;
     margin: 12px;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.temperature{
+    font-size: 60px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.description, .location{
+    font-size: 24px;
+    line-height: 32px;
+}
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    border-top: 1px solid #ccc;
+}
+
+.feels_like{
+    width: 100%;
+    padding: 16px;
+}
+
+.humidity{
+    border-left: 1px solid #ccc;
+    width: 100%;
+    padding: 16px;
 }
