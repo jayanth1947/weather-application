@@ -2,6 +2,8 @@ import { LightningElement } from 'lwc';
 
 import WEATHER_ICONS from '@salesforce/resourceUrl/weatherAppIcons';
 
+import GET_WEATHER_DETAILS from '@salesforce/apex/weatherAppController.getWeatherDetails';
+
 const API_KEY='e80b1298707b974c079898de10ec7858'
 export default class WeatherApp extends LightningElement {
 
@@ -39,18 +41,29 @@ export default class WeatherApp extends LightningElement {
   fetchData(){
     this.isError = false
     this.loadingText = 'Fetching weather details...'
-    console.log("cityName", this.cityName)
-    //inside this will call our api
-   
-    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${this.cityName}&units=metric&appid=${API_KEY}`
-    fetch(URL).then(res=>res.json()).then(result=>{
-        console.log(JSON.stringify(result))
-        this.weatherDetails(result)
+    // console.log("cityName", this.cityName)
+
+    GET_WEATHER_DETAILS({input:this.cityName}).then(result=>{
+        this.weatherDetails(JSON.parse(result))
+        // console.log(JSON.stringify(result))
     }).catch((error)=>{
-      console.error(error)
-      this.loadingText = "Something went wrong"
-      this.isError = true
-    })
+               console.error(error)
+               this.response=null
+               this.loadingText = "Something went wrong"
+               this.isError = true
+             })
+
+    //Below is CLient Side
+   
+//    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${this.cityName}&units=metric&appid=${API_KEY}`
+//     fetch(URL).then(res=>res.json()).then(result=>{
+//         console.log(JSON.stringify(result))
+//         this.weatherDetails(result)
+//     }).catch((error)=>{
+//       console.error(error)
+//       this.loadingText = "Something went wrong"
+//       this.isError = true
+//     })
   }
 
   weatherDetails(info){
@@ -88,9 +101,7 @@ export default class WeatherApp extends LightningElement {
 
       else{}
 
-
-
-
+      
       this.response={
         city:city,
         temprature:Math.floor(temp),

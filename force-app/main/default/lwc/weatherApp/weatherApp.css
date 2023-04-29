@@ -1,13 +1,14 @@
 .app{
     background: #091f43;
     min-height: 100vh;
+    padding: 12px;
     
 }
 
 .app-card{
     background: white;
     max-width: 400px;
-    min-width:200px;
+    min-width:350px;
     border-radius: 8px;
 }
 
