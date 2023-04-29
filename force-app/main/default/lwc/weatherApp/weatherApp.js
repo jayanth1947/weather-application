@@ -1,18 +1,47 @@
 import { LightningElement } from 'lwc';
 
+const API_KEY='e80b1298707b974c079898de10ec7858'
 export default class WeatherApp extends LightningElement {
-    cityName=''
+    cityName = ''
+  loadingText = ''
+  isError = false
 
-    searchHandler(event){
-        this.cityName=event.target.value
-    }
+  get loadingClasses(){
+    return this.isError ? 'error-msg':'success-msg'
+  }
+  searchHandler(event){
+    this.cityName = event.target.value
+  }
 
-    submitHandler(event){
-        event.preventDefault();
-        this.fetchData()
-    }
+  submitHandler(event){
+    event.preventDefault()
+    this.fetchData()
+  }
 
-    fetchData(){
-        console.log("City Name", this.cityName);
+  fetchData(){
+    this.isError = false
+    this.loadingText = 'Fetching weather details...'
+    console.log("cityName", this.cityName)
+    //inside this will call our api
+   
+    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${this.cityName}&units=metric&appid=${API_KEY}`
+    fetch(URL).then(res=>res.json()).then(result=>{
+        console.log(JSON.stringify(result))
+        this.weatherDetails(result)
+    }).catch((error)=>{
+      console.error(error)
+      this.loadingText = "Something went wrong"
+      this.isError = true
+    })
+  }
+
+  weatherDetails(info){
+    if(info.cod === "404"){
+      this.isError = true 
+      this.loadingText = `${this.cityName} isn't a valid city name`
+    } else {
+      this.loadingText = ''
     }
+  }
+
 }
