@@ -2,7 +2,7 @@
 
 This is a simple weather application built using Lightning Web Components (LWC) in Salesforce. It retrieves weather data for a specified city using the OpenWeatherMap API and displays the information on the page.
 
-##Getting Started
+## Getting Started
 To get started with this application, you will need:
 
 - Access to a Salesforce org
