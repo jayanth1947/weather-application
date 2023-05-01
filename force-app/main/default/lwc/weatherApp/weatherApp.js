@@ -1,12 +1,15 @@
 import { LightningElement } from 'lwc';
 
+// Importing the static resources
 import WEATHER_ICONS from '@salesforce/resourceUrl/weatherAppIcons';
 
+// Importing the class and method
 import GET_WEATHER_DETAILS from '@salesforce/apex/weatherAppController.getWeatherDetails';
 
 const API_KEY='e80b1298707b974c079898de10ec7858'
 export default class WeatherApp extends LightningElement {
 
+    // Defining the weather icons using imported resources
     clearIcon=WEATHER_ICONS+'/weatherAppIcons/clear.svg'
     cloudIcon=WEATHER_ICONS+'/weatherAppIcons/cloud.svg'
     dropletIcon=WEATHER_ICONS+'/weatherAppIcons/droplet.svg'
@@ -19,33 +22,46 @@ export default class WeatherApp extends LightningElement {
     arrowBackIcon=WEATHER_ICONS+'/weatherAppIcons/arrow-back.svg'
 
 
-    cityName = ''
+  // Initializing variables to store user input, loading text, response, and error status
+  cityName = ''
   loadingText = ''
   isError = false
   response
-
   weatherIcon
 
+  // Getter function for returning the class name based on the error status
   get loadingClasses(){
     return this.isError ? 'error-msg':'success-msg'
   }
+
+  // Event handler for capturing user input for the city name
   searchHandler(event){
     this.cityName = event.target.value
   }
 
+  // Event handler for handling form submission
   submitHandler(event){
     event.preventDefault()
     this.fetchData()
   }
 
+  // Function for fetching weather data from the server using Apex controller
   fetchData(){
+
+    // Resetting error status and loading text
     this.isError = false
     this.loadingText = 'Fetching weather details...'
     // console.log("cityName", this.cityName)
 
+    // Calling the Apex controller method to get weather details
     GET_WEATHER_DETAILS({input:this.cityName}).then(result=>{
-        this.weatherDetails(JSON.parse(result))
+
+        // Parsing the result and processing the weather data
+        this.weatherDetails(JSON.parse(result)) 
+        // console.log(JSON.parse(result));
         // console.log(JSON.stringify(result))
+
+        // Handling errors
     }).catch((error)=>{
                console.error(error)
                this.response=null
@@ -66,11 +82,17 @@ export default class WeatherApp extends LightningElement {
 //     })
   }
 
+  // Function for processing the weather data
   weatherDetails(info){
+
+    // Checking for invalid city names and displaying error message
     if(info.cod === "404"){
       this.isError = true 
       this.loadingText = `${this.cityName} isn't a valid city name`
-    } else {
+    } 
+    else 
+    {
+      // Extracting weather data and storing it in response variable
       this.loadingText = ''
       this.isError=false
 
@@ -79,6 +101,7 @@ export default class WeatherApp extends LightningElement {
       const {description,id}=info.weather[0]
       const {temp,feels_like,humidity}=info.main
 
+      // Determine which weather icon to display based on weather condition
       if(id===800){
         this.weatherIcon=this.clearIcon
       }
@@ -101,7 +124,7 @@ export default class WeatherApp extends LightningElement {
 
       else{}
 
-      
+      // Update response state with weather data
       this.response={
         city:city,
         temprature:Math.floor(temp),
@@ -113,6 +136,7 @@ export default class WeatherApp extends LightningElement {
     }
   }
 
+  // Handling the back icon 
   backHandler(){
     this.response=null
     this.cityName=''

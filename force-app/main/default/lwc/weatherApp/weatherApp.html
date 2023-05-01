@@ -1,17 +1,24 @@
 <template>
     <div class="app flex-center">
+        <!-- Main card container -->
         <div class="app-card">
+            <!-- Header section -->
             <header class="flex-center">
+                <!-- Back arrow icon -->
                 <template if:true={response}>
-                <img src={arrowBackIcon} alt="Back Arrow" onclick={backHandler} class="slds-m-right_medium cursor">
-            </template>
+                    <img src={arrowBackIcon} alt="Back Arrow" onclick={backHandler} class="slds-m-right_medium cursor">
+                </template>
+                <!-- App title -->
                 <h1>Weather App</h1>
             </header>
+            <!-- Loading spinner section -->
             <template if:true={loadingText}>
                 <div class={loadingClasses}>
                     {loadingText} 
                  </div>
             </template>
+
+            <!-- Search form section -->
             <template if:false={response}>
                 <section class="slds-m-around_large">
                     <form onsubmit={submitHandler}>
@@ -22,25 +29,33 @@
                 </section>
             </template>
             
-
+            <!-- Weather information section -->
             <template if:true={response}>
-
-           
             <section class="slds-m-around_large text-center">
-                <img src={weatherIcon} alt="Weather Icon" class="weather-img">
-                <div class="temperature">
-                    <span>{response.temprature}</span>
-                    <span>"</span>C
-                </div>
-                <div class="description">{response.description}</div>
-                <div class="location">
-                    <img src={mapIcon} alt="Location Icon">
-                    <span>{response.location}</span>
-                </div>
+
+                    <!-- Weather icon -->
+                    <img src={weatherIcon} alt="Weather Icon" class="weather-img">
+
+                    <!-- Temperature display -->
+                    <div class="temperature">
+                        <span>{response.temprature}</span>
+                        <span>"</span>C
+                    </div>
+
+                    <!-- Weather description -->
+                    <div class="description">{response.description}</div>
+
+                    <!-- Location display -->
+                    <div class="location">
+                        <img src={mapIcon} alt="Location Icon">
+                        <span>{response.location}</span>
+                    </div>
             </section>
 
-           
+           <!-- Additional weather information section -->
             <footer>
+
+                <!-- "Feels like" temperature display -->
                 <div class="feels_like">
                     <div>
                         <img src={thermometerIcon} alt="Weather Icon">
@@ -49,7 +64,7 @@
                     <p>Feels Like</p>
                 </div>
 
-
+                <!-- Humidity display -->
                 <div class="humidity">
                     <div>
                         <img src={dropletIcon} alt="Weather Icon">
@@ -58,8 +73,7 @@
                     <p>Humidity</p>
                 </div>
             </footer>
-        </template>
+            </template>
         </div>
-
     </div>
 </template>

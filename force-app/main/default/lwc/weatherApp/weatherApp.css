@@ -1,15 +1,27 @@
+:host(){
+    --font-12:12px;
+    --font-20:20px;
+    --font-24:24px;
+    --font-8:8px;
+    --dark-blue:#091f43;
+    --white:#ffffff;
+
+}
+
+/* Style for the App */
 .app{
-    background: #091f43;
+    background: var(--dark-blue);
     min-height: 100vh;
-    padding: 12px;
+    padding: var(--font-12);
     
 }
 
+/* Style for the card */
 .app-card{
-    background: white;
+    background: var(--white);
     max-width: 400px;
     min-width:350px;
-    border-radius: 8px;
+    border-radius: var(--font-8);
 }
 
 .flex-center{
@@ -18,26 +30,29 @@
     align-items: center;
 }
 
+/* Style for the Header Tag */
 header{
-    font-size: 20px;
-    color: #091f43;
+    font-size: var(--font-20);
+    color: var(--dark-blue);
     padding: 16px;
     border-bottom: 1px solid #ccc;
     font-size: 28px;
     font-weight: 500;
 }
 
+/* Style for the input element */
 input{
     width: 100%;
     text-align: center;
     padding: 16px;
     height: 55px;
     outline: none;
-    font-size: 24px;
-    border-radius: 8px;
+    font-size: var(--font-24);
+    border-radius: var(--font-8);
     border: 1px solid #ccc;
 }
 
+/* Style for the PlaceHolder */
 input::placeholder{
     color: #bfbfbf;
 }
@@ -45,49 +60,55 @@ input::placeholder{
     width: 100%;
 }
 
+/* Style for the Button */
 button{
     background: #ed2144;
     height: 55px;
     border: none;
     outline: none;
-    font-size: 24px;
-    border-radius: 8px;
-    color: white;
+    font-size: var(--font-24);
+    border-radius: var(--font-8);
+    color: var(--white);
 }
 
+/* Style for the success message */
 .success-msg{
     color: #155724;
     background: #d4edda;
     border-radius: 5px;
-    padding: 12px;
-    margin: 12px;
+    padding: var(--font-12);
+    margin: var(--font-12);
 }
 
+/* Style for the error message */
 .error-msg{
     color: #721c24;
     background: #f8d7da;
     border-radius: 5px;
-    padding: 12px;
-    margin: 12px;
+    padding: var(--font-12);
+    margin: var(--font-12);
 }
 
 .text-center{
     text-align: center;
 }
 
+/* Style for the temperature Field */
 .temperature{
-    font-size: 24px;
+    font-size: var(--font-24);
     font-weight: 700;
     line-height: normal;
-    padding-top: 20px;
+    padding-top: var(--font-20);
 }
 
+/* Style for the description and location fields */
 .description, .location{
-    font-size: 20px;
+    font-size: var(--font-20);
     line-height: 32px;
-    padding-top: 20px;
+    padding-top: var(--font-20);
 }
 
+/* Style for the footer */
 footer{
     display: flex;
     justify-content: space-around;
@@ -95,11 +116,13 @@ footer{
     border-top: 1px solid #ccc;
 }
 
+/* Style for the feels like field */
 .feels_like{
     width: 100%;
     padding: 14px;
 }
 
+/* Style for the humidity */
 .humidity{
     border-left: 1px solid #ccc;
     width: 100%;
