@@ -1,18 +1,37 @@
-# Salesforce DX Project: Next Steps
+# Weather App using LWC
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This is a simple weather application built using Lightning Web Components (LWC) in Salesforce. It retrieves weather data for a specified city using the OpenWeatherMap API and displays the information on the page.
 
-## How Do You Plan to Deploy Your Changes?
+##Getting Started
+To get started with this application, you will need:
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+- Access to a Salesforce org
+- Access to the Salesforce CLI
+- A text editor
 
-## Configure Your Salesforce DX Project
+## Features
+- Fetches current weather details of any location using OpenWeatherMap API
+- Displays the temperature in Celsius
+- Displays weather description, location, feels like temperature, and humidity
+- Displays a weather icon based on the current weather conditions
+- Simple and easy-to-use UI
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
 
-## Read All About It
+## Technologies Used
+- Lightning Web Components (LWC)
+- HTML
+- CSS
+- JavaScript
+- OpenWeatherMap API
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+
+## Usage
+- Open the "Weather App" from the app launcher.
+- Enter a city name in the search bar and click "Search".
+- The weather details for that city will be displayed on the screen.
+- To clear the results and search for a new city, click the "Back" button.
+
+[Demo Link](https://empathetic-goat-jgrtil-dev-ed.my.site.com/weatherApplication/)
+
+## Contributing
+If you'd like to contribute to this project, feel free to fork this repository and submit a pull request.
